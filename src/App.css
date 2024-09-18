@@ -1,0 +1,164 @@
+html, body {
+  height: 100%; /* Ensure the html and body take up 100% of the height */
+  width: 100%; /* Ensure the html and body take up 100% of the width */
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevent horizontal overflow */
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Ensure the root div takes up 100% of the height */
+  width: 100%; /* Ensure the root div takes up 100% of the width */
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Ensure the App div takes up the remaining space */
+  height: 100%; /* Ensure the App div takes up 100% of the height of the root div */
+  width: 100%; /* Ensure the App div takes up 100% of the width of the root div */
+}
+
+.note-app {
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1; /* Ensure the note-app takes up the remaining space */
+  height: 100%; /* Ensure the note-app takes up 100% of the height of the App div */
+  width: 100%; /* Ensure the note-app takes up 100% of the width of the App div */
+}
+
+.note-form, .note-list {
+  width: 50%; /* Ensure each component takes up half the screen width */
+  background-color: white;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  height: 100%; /* Ensure the note-form and note-list take up 100% of the height of the note-app div */
+}
+
+.note-form form {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the text and button horizontally */
+  padding: 1rem; /* Add padding to the form */
+}
+
+.note-form form textarea {
+  width: 100%; /* Ensure the textarea takes up the full width */
+  max-width: 400px; /* Optional: Limit the maximum width */
+}
+
+.note-form form button {
+  width: auto; /* Ensure the button width is auto */
+  padding: 0.5rem 1rem; /* Add padding to the button */
+}
+
+.note-form form .char-counter {
+  margin-top: 0.5rem; /* Add some space above the character counter */
+  font-size: 0.9rem; /* Slightly smaller font size for the counter */
+  color: #666; /* Grey color for the counter */
+}
+
+.note-list {
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
+h1, h2 {
+  color: #333;
+  text-align: center; /* Center the headings */
+}
+
+form {
+  margin-bottom: 2rem;
+}
+
+textarea {
+  width: 100%;
+  height: 100px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  box-sizing: border-box; /* Ensure padding is included in the element's total width and height */
+}
+
+button {
+  padding: 0.5rem 1rem;
+  margin: 0.5rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button[type="submit"] {
+  background-color: #4caf50;
+  color: white;
+}
+
+button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+.note-actions .edit {
+  background-color: #008cba; /* Blue background for edit button */
+  color: white;
+}
+
+.note-actions .edit:hover {
+  background-color: #007bb5; /* Darker blue on hover */
+}
+
+.note-actions .delete {
+  background-color: #f44336; /* Red background for delete button */
+  color: white;
+}
+
+.note-actions .delete:hover {
+  background-color: #e53935; /* Darker red on hover */
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0; /* Remove default margin */
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  margin: 0.5rem 0;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%; /* Ensure the li takes up the full width */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  overflow: hidden; /* Prevent children from overflowing */
+}
+
+.note-body {
+  flex: 7; /* Take 70% of the horizontal space */
+  margin-right: 0.5rem; /* Adjust margin to reduce blank space */
+  color: #333; /* Ensure text color is visible */
+  overflow-wrap: break-word; /* Ensure long words break correctly */
+  text-align: center; /* Center the note text */
+  overflow: hidden; /* Prevent content from overflowing */
+  white-space: nowrap; /* Prevent text from wrapping */
+  text-overflow: ellipsis; /* Add ellipsis for overflowed text */
+}
+
+.note-actions {
+  flex: 3; /* Take 30% of the horizontal space */
+  display: flex;
+  gap: 0.25rem; /* Adjust gap to reduce blank space */
+  align-items: center;
+  justify-content: flex-end; /* Align buttons to the right */
+}
