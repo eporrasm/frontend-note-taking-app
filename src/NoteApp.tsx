@@ -54,7 +54,7 @@ const NoteApp = () => {
     }
   };
 
-  const createCategory = async (name: string) => {
+  const createCategory = async (name: string): Promise<Category> => {
     const existingCategory = categories.find(category => category.name.toLowerCase() === name.toLowerCase());
     if (existingCategory) {
       return existingCategory;
@@ -79,7 +79,7 @@ const NoteApp = () => {
       body: JSON.stringify({ body: noteBody }),
     });
     const newNote: Note = await response.json();
-    let category = null;
+    let category: Category | null = null;
     if (newCategory) {
       category = await createCategory(newCategory);
       await updateNoteCategory(newNote.id, category.id);
@@ -95,7 +95,7 @@ const NoteApp = () => {
 
   const updateNote = async (id: number) => {
     let categoryId = selectedCategory;
-    let category = null;
+    let category: Category | null = null;
     if (newCategory) {
       category = await createCategory(newCategory);
       categoryId = category.id;
