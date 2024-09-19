@@ -25,20 +25,17 @@ html, body {
 
 .note-app {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column; /* Stack children vertically */
   flex-grow: 1; /* Ensure the note-app takes up the remaining space */
-  height: 100%; /* Ensure the note-app takes up 100% of the height of the App div */
   width: 100%; /* Ensure the note-app takes up 100% of the width of the App div */
+  background-color: white;
 }
 
 .note-form, .note-list {
-  width: 50%; /* Ensure each component takes up half the screen width */
+  width: 100%; /* Ensure each component takes up the full width */
   background-color: white;
   padding: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box; /* Include padding and border in the element's total width and height */
-  height: 100%; /* Ensure the note-form and note-list take up 100% of the height of the note-app div */
+  margin: 0; /* Remove any margin */
 }
 
 .note-form form {
@@ -50,12 +47,13 @@ html, body {
 
 .note-form form textarea {
   width: 100%; /* Ensure the textarea takes up the full width */
-  max-width: 400px; /* Optional: Limit the maximum width */
+  max-width: 600px; /* Optional: Limit the maximum width */
 }
 
 .note-form form button {
   width: auto; /* Ensure the button width is auto */
   padding: 0.5rem 1rem; /* Add padding to the button */
+  margin-top: 1rem; /* Add white space on top of the button */
 }
 
 .note-form form .char-counter {
@@ -64,8 +62,26 @@ html, body {
   color: #666; /* Grey color for the counter */
 }
 
+.note-form .category-inputs {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.note-form .category-inputs select,
+.note-form .category-inputs input {
+  margin-left: 50px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.note-form .or-text {
+  margin-right: 10px;
+}
+
 .note-list {
-  overflow-y: auto; /* Enable vertical scrolling */
+  overflow: visible; /* Ensure the note-list does not have its own scrollbar */
 }
 
 h1, h2 {
@@ -74,7 +90,7 @@ h1, h2 {
 }
 
 form {
-  margin-bottom: 2rem;
+  margin-bottom: 0; /* Remove bottom margin from form */
 }
 
 textarea {
@@ -88,13 +104,15 @@ textarea {
   box-sizing: border-box; /* Ensure padding is included in the element's total width and height */
 }
 
-button {
+.note-actions button {
   padding: 0.5rem 1rem;
   margin: 0.5rem;
   border: none;
   border-radius: 4px;
   font-size: 1rem;
   cursor: pointer;
+  width: 100px; /* Set a fixed width for the buttons */
+  text-align: center; /* Center the text inside the button */
 }
 
 button[type="submit"] {
@@ -122,6 +140,15 @@ button[type="submit"]:hover {
 
 .note-actions .delete:hover {
   background-color: #e53935; /* Darker red on hover */
+}
+
+.note-actions .archive {
+  background-color: #ff9800; /* Orange background for archive button */
+  color: white;
+}
+
+.note-actions .archive:hover {
+  background-color: #fb8c00; /* Darker orange on hover */
 }
 
 ul {
@@ -155,10 +182,57 @@ li {
   text-overflow: ellipsis; /* Add ellipsis for overflowed text */
 }
 
+.note-category {
+  flex: 2; /* Adjusted to fit between note-body and note-actions */
+  margin-right: 0.5rem; /* Adjust margin to reduce blank space */
+  color: #666; /* Grey color for category text */
+  text-align: center; /* Center the category text */
+  overflow: hidden; /* Prevent content from overflowing */
+  white-space: nowrap; /* Prevent text from wrapping */
+  text-overflow: ellipsis; /* Add ellipsis for overflowed text */
+}
+
 .note-actions {
   flex: 3; /* Take 30% of the horizontal space */
   display: flex;
   gap: 0.25rem; /* Adjust gap to reduce blank space */
   align-items: center;
   justify-content: flex-end; /* Align buttons to the right */
+}
+
+.filter-category {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-left: 30px;
+}
+
+.filter-category select {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.view-toggle {
+  display: flex;
+  justify-content: center;
+  background-color: white;
+}
+
+.view-toggle button {
+  padding: 0.5rem 2rem; /* Increase padding to make buttons wider */
+  margin: 0 0.5rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-right: 10px;
+  margin-left: 60px;
+  background-color: #008080; /* Set base color for buttons */
+  color: white;
+  opacity: 1; /* Default opacity for non-active buttons */
+}
+
+.view-toggle button.active {
+  opacity: 0.6; /* Reduce opacity for active button */
 }
